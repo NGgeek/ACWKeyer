@@ -17,10 +17,16 @@ int tonefreq = 600;
 SoftwareSerial toMega(rxPin, txPin);
 void connectToMega(){
     Serial.println("Connecting to Mega...");
-    while(recievedChars != "Hello, uno!"){
-        recWithEndMarker();
-        Serial.print(".");
+    while(true){
+      toMega.readBytes(recievedChars, 11);
+      Serial.println(".");
+      delay(100);
+      if(recievedChars == "Hello, uno!"){
+        goto connected;
+      }
     }
+    connected:
+    Serial.println("Connected!");
 }
 
 void setup(){
@@ -31,8 +37,6 @@ void setup(){
     pinMode(dahPin, INPUT);
     pinMode(Speaker, OUTPUT);
     connectToMega();
-    Serial.println(".");
-    Serial.println("Connected to Mega!");
 }
 
 void keydit() {
@@ -58,60 +62,16 @@ void keydah() {
 }
 
 void loop(){
-    if(digitalRead(ditPin)==HIGH){
-        Serial.println("Recieved a dit");
-        keydit();
-    }
+  
+  if(digitalRead(ditPin)==HIGH){
+      Serial.println("Recieved a dit");
+      keydit();
+  }
 
-    if(digitalRead(dahPin)==HIGH){
-        Serial.println("Recieved a dah");
-        keydah();
-    }
-    if(recievedChars == "speed: "){
-        toMega.println("<go>");
-        if(toMega.available() > 0) {
-            speed = toMega.parseInt();
-        }
-        Serial.print("Changing speed to ");
-        Serial.println(speed);
-    }
-    if(recievedChars == "freq: "){
-        toMega.println("<go>");
-        if(toMega.available() > 0) {
-            tonefreq = toMega.parseInt();
-        }
-        Serial.print("Changing frequency to ");
-        Serial.println(tonefreq);
-    }
+  if(digitalRead(dahPin)==HIGH){
+      Serial.println("Recieved a dah");
+      keydah();
+  }
+  
 }
 
-int recWithEndMarker() {
-    static boolean recvInProgress = false;
-    static byte ndx = 0;
-    char startMarker = '<';
-    char endMarker = '>';
-    char rc;
-    
-    while (toMega.available() > 0 && newData == false) {
-        rc = Serial.read();
-
-        if (recvInProgress == true) {
-            if (rc != endMarker) {
-                recievedChars[ndx] = rc;
-                ndx++;
-                if (ndx >= numChars) {
-                    ndx = numChars - 1;
-                }
-            }
-            else {
-                recievedChars[ndx] = '\0';
-                recvInProgress = true;
-                ndx = 0;
-                newData = true;
-            }
-        }    
-        else if (rc == startMarker){
-            recvInProgress = true;
-        }   
-    }
-}

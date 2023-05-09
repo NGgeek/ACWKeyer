@@ -24,12 +24,14 @@ void myGenieEventHandler(void){
   if (genie.EventIs(&Event, GENIE_REPORT_EVENT, GENIE_OBJ_SLIDER, screentone))
   {
     tonefreq = genie.GetEventData(&Event);
-    genie.WriteObject(GENIE_OBJ_LED_DIGITS, screentone, tonefreq); 
+    genie.WriteObject(GENIE_OBJ_LED_DIGITS, screentone, tonefreq);
+    sendfreq();
   }
   if (genie.EventIs(&Event, GENIE_REPORT_EVENT, GENIE_OBJ_SLIDER, screenspeed))
   {
     speed = genie.GetEventData(&Event);
     genie.WriteObject(GENIE_OBJ_LED_DIGITS, screenspeed, speed);
+    sendspeed();
   }
 }
 
@@ -53,7 +55,8 @@ void setup() {
   genie.WriteStr(0, GENIE_VERSION);
   delay(3000);
   Serial.println("Connecting to Uno");
-  toUno.println("<Hello, uno!>");
+  toUno.println("Hello, uno!");
+  Serial.println("Hello, World!");
   Serial.println("Beginning");
 }
 
@@ -65,17 +68,21 @@ void loop() {
 
 }
 void sendspeed(){
+  Serial.println("Sending updated speed");
   toUno.println("<speed: >");
   recWithEndMarker();
   if(recievedChars == "go" ){
+    Serial.println("Recieved conf from uno");
     toUno.println(speed);
   }
   
 }
 void sendfreq(){
+  Serial.println("Sending updated freq");
   toUno.println("<freq: >");
   recWithEndMarker();
   if(recievedChars == "go" ){
+    Serial.println("Recieved Conf from uno");
     toUno.println(tonefreq);
   }
 }

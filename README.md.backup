@@ -34,6 +34,5 @@ An Arduino Controlled Digital Keyer for Ham Radio CW Training.
 
 ## BUILD LOG
 ***
-#### 5/9/2023
-- One Arduino isn't enough, the process that controls the screen lags up the arduino.
-- 
+#### 5/9/2023 - 1759UTC
+
