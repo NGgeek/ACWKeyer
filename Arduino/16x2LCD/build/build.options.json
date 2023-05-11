@@ -1,0 +1,10 @@
+{
+  "additionalFiles": "",
+  "builtInToolsFolders": "",
+  "compiler.optimization_flags": "",
+  "customBuildProperties": "",
+  "fqbn": "arduino:avr:uno",
+  "hardwareFolders": "/home/nathan/.arduino15/packages",
+  "otherLibrariesFolders": "/home/nathan/Arduino/libraries",
+  "sketchLocation": "/home/nathan/Documents/School/2022-2023/TrimesterIII/Engineering/JuniorProject/ACWKeyer/Arduino/16x2LCD"
+}

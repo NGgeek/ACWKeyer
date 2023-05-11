@@ -1,0 +1,27 @@
+[
+  {
+    "Sourcefile": null,
+    "Include": "",
+    "Includepath": "/home/nathan/.arduino15/packages/arduino/hardware/avr/1.8.6/cores/arduino"
+  },
+  {
+    "Sourcefile": null,
+    "Include": "",
+    "Includepath": "/home/nathan/.arduino15/packages/arduino/hardware/avr/1.8.6/variants/standard"
+  },
+  {
+    "Sourcefile": "/home/nathan/Documents/School/2022-2023/TrimesterIII/Engineering/JuniorProject/ACWKeyer/Arduino/16x2LCD/build/sketch/16x2LCD.ino.cpp",
+    "Include": "LiquidCrystal.h",
+    "Includepath": "/home/nathan/Arduino/libraries/LiquidCrystal/src"
+  },
+  {
+    "Sourcefile": "/home/nathan/Documents/School/2022-2023/TrimesterIII/Engineering/JuniorProject/ACWKeyer/Arduino/16x2LCD/build/sketch/16x2LCD.ino.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "/home/nathan/Arduino/libraries/LiquidCrystal/src/LiquidCrystal.cpp",
+    "Include": "",
+    "Includepath": null
+  }
+]
