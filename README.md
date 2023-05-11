@@ -40,4 +40,4 @@ An Arduino Controlled Digital Keyer for Ham Radio CW Training.
 
 #### 5/11/2023
 - Found smaller 16x2 LCD, rewriting UI using physical buttons
-
+- Couldn't get LCD to work, But found I2C LCD at home that might be easier to use, plus it uses less pins on the arduino. Will require little updating to the code.
